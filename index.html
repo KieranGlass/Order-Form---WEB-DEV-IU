@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.css">
+</head>
+
+<style>
+body {
+    background-color:#e5fcf5; 
+}
+
+h1 { 
+    background-color: black;
+    color: rgba(3, 248, 15);
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: Roboto;
+}
+
+#spaceInvader {
+    width: 10%;
+}
+
+#headerDiv {
+    background-color: black;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 1%; 
+    font-family: Roboto;
+}
+
+input {
+    text-align: center;
+}
+
+select { 
+    text-align: center;
+}
+
+hr {
+    background-color: black;
+    height: 5px;
+    
+}
+
+.F1{
+    background-color: black;
+    border-radius: 7px;  
+}
+
+#L1 {
+    font-family: Roboto;
+    font-size: 20px;
+    text-align: center;
+}   
+
+.button1 {
+    background-color:black;
+    color:rgba(3, 248, 15);
+    border-radius: 10px;
+    border: 2px solid rgba(3, 248, 15, 0.671);
+    font-family: Roboto;
+    float: right;
+    padding: 3% 10%;
+    box-shadow: 0 8px 16px 0 rgba(3, 248, 15, 0.371), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button1:hover {
+    transition: 0.4s;
+    background-color: black;
+    padding: 2% 8%;
+    box-shadow: 0 8px 16px 0 rgba(3, 248, 15);
+}
+
+li {
+    color: black;
+    font-family: Roboto;
+}
+
+#C2 {
+    display: none;
+}
+
+h3 {
+    text-align: center;
+}
+
+#monthSelect {
+    width: 49%;
+    border-radius: 5px;
+}
+#yearSelect {
+    width: 49%;
+    border-radius: 5px;
+}
+
+.radios {
+    text-align: center;
+}
+
+.footer { 
+    background-color: black;
+    color: rgba(3, 248, 15, 0.671);
+    text-align: center;
+    
+}
+
+.modal {
+ display: none; /* Hidden by default */ 
+ position: fixed; 
+ z-index: 1; 
+ left: 0;
+ top: 0;
+ width: 100%; 
+ height: 100%; 
+ overflow: auto; 
+ background-color: rgb(0,0,0); 
+ background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+ background-color: #fefefe;
+ margin: 15% auto; 
+ padding: 20px;
+ border: 1px solid #888;
+ width: 80%; 
+}
+
+.close {
+ color: #aaa;
+ float: right;
+ font-size: 28px;
+ font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+ color: black;
+ text-decoration: none;
+ cursor: pointer;
+}
+
+#errorMessage {
+    color: red;
+    font-size: large;
+    text-align: center;
+}
+
+</style>
+
+<body>
+
+    <div class="container-fluid" id="headerDiv">
+            <img src="images/spaceInvader.png" id="spaceInvader">
+            <h1><b>| GLASS COMPUTERS |</b></h1>
+            <img src="images/spaceInvader.png" id="spaceInvader">
+    </div>
+    
+    <div class="container-fluid">
+        
+        <h2><b>Order Form</b></h2>
+        <hr>
+    </div>
+
+    <div id="confirmationModal" class="modal">
+
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Are you sure you want to complete this transaction?</p>
+          <button id="confirmTransaction">Confirm</button>
+        </div>
+       
+    </div>
+
+    <div id="errorMessage"></div>
+
+<div class="container-fluid">
+
+    <div class="row" id="R1">    
+
+        <div class="col-4" id="C1">
+
+            <label id="L1" class="col-12 py-4"><b>Shipping Info:</b></label>
+        
+            <form class="F1 col-12 border border-dark">
+
+                <div class="mb-1">
+                    <input class="form-control" placeholder="Street Address" required>
+                </div>    
+
+                <div class="mb-1">
+                    <input class="form-control" placeholder="Town/City" required>
+                </div> 
+
+                <div class="mb-1">
+                    <input class="form-control" placeholder="Country" required>
+                </div> 
+
+                <div class="mb-1">
+                    <input class="form-control" placeholder="Postcode" required>
+                </div>   
+
+            </form> 
+
+        </div>
+        
+        <div class="col-4" id="C1">
+
+            <label id="L1" class="col-12 py-4"><b>Personal Info:</b></label>
+        
+            <form class="F1 col-12 border border-dark">
+
+                <div class="mb-1">
+                    <input type="text" class="form-control" placeholder="First Name" required>
+                </div>    
+
+                <div class="mb-1">
+                    <input type="text" class="form-control" placeholder="Last Name" required>
+                </div> 
+
+                <div class="mb-1">
+                    <input type="email" class="form-control" placeholder="Email Address" required>
+                </div> 
+
+                <div class="mb-1">
+                    <input type ="date" class="form-control" placeholder="Date of Birth" required>
+                </div>   
+
+            </form> 
+
+        </div>
+
+        <div class="col-4">
+
+            <label id="L1" class="col-12 py-4"><b>Order Info:</b></label>
+            
+            <form class="F1 border border-dark">
+                    
+                <div class="mb-1">
+                    <select id="first-choice" class="form-control mb-1">
+                        <option selected disabled hidden value="base">Component Type</option>
+                        <option value="cpu">CPU</option>
+                        <option value="psu">PSU</option>
+                        <option value="gpu">GPU</option>
+                        <option value="motherboard">Motherboard</option>
+                        <option value="ram">Memory (RAM)</option>
+                        <option value="storage">Storage</option>
+                        <option value="case">Cases</option>
+                        <option value="fan">Fans/Coolers</option>
+                    </select>    
+                </div>
+                        
+                <div class="mb-1">
+                    <select id="second-choice" class="form-control mb-1">
+                        <option>Please Select Component Type</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="button" class="button1 mt-2" id="addToCartButton">Add to Cart</button>
+                </div>
+                    
+            </form> 
+
+        </div>
+
+    </div>  
+    
+    <br>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-4">
+
+            <label id="L1" class="col-12 pb-4"><b>Card Details:</b></label>
+            
+            <form class="F1 col-12 border border-dark">
+
+                <div class="mb-1">
+                    <input class="form-control" placeholder="Card Number" required>
+                </div>    
+
+                <div class="mb-1">
+                    <input class="form-control" placeholder="Name on Card" required>
+                </div> 
+
+                <div class="date field mb-1">
+
+                    <select id="monthSelect" name="Month">
+                        <option selected disabled hidden>Exp Month</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+
+                    <select id="yearSelect" name="Year">
+                        <option selected disabled hidden>Exp Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                    </select>
+
+                </div> 
+
+                <div class="mb-1">
+                    <input class="form-control" placeholder="Security Code" required>
+                </div>   
+
+            </form> 
+
+        </div>
+
+        <div class="col-4">
+            
+                <label id="L1" class="col-12"><b>Same Billing + Shipping Address?</b></label>
+                <br>
+                <label id=L1 for="yes" class="col-12 pt-3"><b>Yes</b></label>
+                <br>
+                <input type="radio" class="radios col-12" id="yes" name="billing" value="Yes" checked/>
+                <br>
+                <label id="L1" for="no" class="col-12"><b>No</b></label>
+                <br>
+                <input type="radio" class="radios col-12" id="no" name="billing" value="No"/>
+                
+            
+        </div>
+
+        <div class="col-4">
+            <div id="C2">
+    
+                <label id="L1" class="col-12 pb-4"><b>Billing Address:</b></label>
+            
+                <form class="F1 col-12 border border-dark">
+    
+                    <div class="mb-1">
+                        <input class="form-control" placeholder="Street Address">
+                    </div>    
+    
+                    <div class="mb-1">
+                        <input class="form-control" placeholder="Town/City">
+                    </div> 
+    
+                    <div class="mb-1">
+                        <input class="form-control" placeholder="Country">
+                    </div> 
+    
+                    <div class="mb-1">
+                        <input class="form-control" placeholder="Postcode">
+                    </div>   
+    
+                </form> 
+    
+            </div>
+            </div> 
+
+    </div>
+
+    <br>
+    <hr>
+    <div class="row">
+
+        <div class="col-4" id="cart">
+            <label id="L1" class="col-12 pb-4"><b>Shopping Cart:</b></label>
+            <div id="cartItems">
+                <ol>
+    
+                </ol>
+            </div>
+        </div>
+
+        <div class="col-4" id="totalSection">
+            <label id="L1" class="col-12"><b>Total To Pay ($)</b></label>
+            <h3 id="total" class="col-12 py-4"></h3>
+        </div>
+
+        <div class="col-4">
+            <button type="button" class="button1 mt-2" id="completeTransactionButton">Complete Transaction</button>
+        </div>
+        
+    </div>
+
+    <div class="footer"><i>Thanks for Visiting!</i></div>
+
+</div>
+
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+
+        <script>
+
+            // select tag dropdown of computer components
+            // links price and name together for when button is clicked
+            // and sent to cart 
+        document.getElementById('first-choice').addEventListener('change', function() {
+        var secondChoice = document.getElementById('second-choice');
+        secondChoice.innerHTML = ''; // clear the second select tag
+
+        var prices = {
+            'cpu': ['419.00', '656.00', '101.23', '289.00', '283.00'], // Prices for different options of 'cpu'
+            'psu': ['60.00', '79.99', '139.90', '126.04', '165.51'], // Prices for different options of 'psu'
+            'gpu': ['1600.00', '949.00', '539.00', '299.00', '499.00'], // Prices for different options of 'gpu'
+            'motherboard': ['1193.15', '300,79', '452,99', '220.01', '225.44'], // Prices for different options of 'motherboard'
+            'ram': ['197.39', '151.83', '103.89', '136.36', '129.98'], // Prices for different options of 'ram'
+            'storage': ['101.63', '109.99', '46.99', '89.99', '209.99'], // Prices for different options of 'storage'
+            'case': ['429.99', '124.90', '131.93', '139.99', '102.84', '125.95', '105.99', '217.49'], // Prices for different options of 'case'
+            'fan': ['32.90', '14.90', '23.99', '20.99', '45.99'], // Prices for different options of 'fan'
+                    };
+
+                    // names of all different computer component choices
+            switch (this.value) {
+                case 'cpu':
+                    var options = ['AMD Ryzen 7 7800X3D', 'AMD Ryzen 9 7950X3D', 'Intel Core i3-12100F', 'Intel Core i5-13400', 'Intel Core i5-13600K'];
+                    break;
+                case 'psu':
+                    var options = ['Corsair CX450', 'Corsair CX550F RGB', 'Corsair RM550x', 'XPG Core Reactor 650W', 'Cooler Master V750 Gold V2'];
+                    break;
+                case 'gpu':
+                    var options = ['GeForce RTX 4090', 'Radeon RX 7900 XTX', 'GeForce RTX 4070', 'GeForce RTX 4060', 'Radeon RX 7800 XT'];
+                    break;
+                case 'motherboard':
+                    var options = ['ASRock Z790 Nova Wi-Fi', 'ASRock Z790 Steel Legend', 'ASRock Z790 Taichi Lite', 'Gigabyte Z790 Aorus Xtreme', 'MSI MAG B760M Mortar Wi-Fi'];
+                    break;
+                case 'ram':
+                    var options = ['G.Skill Trident Z5 Neo RGB DDR5-6000', 'G.Skill Trident Z5 RGB DDR5-6000', 'Samsung DDR5-4800', 'TeamGroup T-Force Xtreem ARGB DDR4-3600', 'Patriot Viper Steel DDR4-4400'];
+                    break;
+                case 'storage':
+                    var options = ['WD Black SN850X', 'WD Black SN770', 'Lexar NM790', 'SK Hynix Platinum P41', 'Sabrent Rocket 2230'];
+                    break;
+                case 'case':
+                    var options = ['Cooler Master HAF 700 Evo', 'Corsair Obsidian Series 4000X RBG', 'Fractal Design Meshify 2', 'Fractal Design North', 'Lian Li Lancool', 'NZXT H7 Flow', 'Phanteks Eclipse G360A', 'Shadow Base 800 FX'];
+                    break;
+                case 'fan':
+                    var options = ['Noctua NF-A12x25 PWM', 'Noctua NF-S12B redux-1200', 'Scythe Kaze Flex 120 PWM', 'Corsair LL120 RGB', 'Cooler Master MF120R A-RGB'];
+                    break;
+                default:
+                    var options = ['Please choose from above'];
+                }
+
+                    for (var i = 0; i < options.length; i++) {
+                        var opt = options[i];
+                        var el = document.createElement("option");
+                        el.textContent = opt + ' - $' + prices[this.value][i]; // Concatenate the name and price;
+                        el.value = opt;
+                        el.setAttribute('item-name', opt);
+                        el.setAttribute('data-price', prices[this.value][i]); // Set the price attribute
+                        secondChoice.appendChild(el);
+                    }
+        });
+
+        var cartList = document.getElementById('cartItems').querySelector('ol');
+        var total = 0;
+        var cart = {
+
+            // array of items that will make the shopping cart list
+            items: [],
+
+            //adds item to the cart
+            addItem: function(item, price) {
+                this.items.push({name: item, price: price});
+                this.updateCart();
+            },
+            
+            //takes info passed to above functions + updates cart
+            //
+            updateCart: function() {
+            
+            //'liTotal' is assigned the element with the ID 'total'
+            var liTotal = document.getElementById('total');
+            
+            // If 'liTotal' doesn't exist, create a new label 
+            // element with the ID 'total' 
+            // and append it to the element with the ID 'totalSection'
+            if(!liTotal){
+                liTotal = document.createElement('label');
+                liTotal.id = 'total';
+                liTotal.className = 'total-component';
+                document.getElementById('totalSection').appendChild(liTotal);
+            }
+
+            // 'startIndex' is set to the value of 'lastProcessedIndex' 
+            //if it exists, otherwise it's set to 0.
+            var startIndex = this.lastProcessedIndex || 0;
+
+            // For each item in 'items' array starting from 'startIndex', 
+            // create a new list item ('li') and append it to 'cartList'.
+            // Also, calculate the total cost by adding the price of the
+            // current item to the existing total.
+            // Finally, update the text content of 'liTotal' to reflect the new total cost.
+            this.items.slice(startIndex).forEach(function(item) {
+                var li = document.createElement('li');
+                li.textContent = item.name + ' - $' + item.price;
+                cartList.appendChild(li);
+                total += parseFloat(item.price);
+                liTotal.textContent = parseFloat(total).toFixed(2);
+            });
+
+            // Update 'lastProcessedIndex' to the length of the 'items' array
+
+            this.lastProcessedIndex = this.items.length;
+            }
+
+        };  
+
+        // gets info on name and price to pass to
+        // addItem function when add2cart clicked
+        document.getElementById('addToCartButton').addEventListener('click', function() {
+            var secondChoice = document.getElementById('second-choice');
+            var selectedItem = secondChoice.options[secondChoice.selectedIndex].getAttribute('item-name');
+            if(selectedItem){ // fixes bug of clicking add 2 cart button before 
+                              // selecting a component breaks total element.
+            var price = secondChoice.options[secondChoice.selectedIndex].getAttribute('data-price');
+            cart.addItem(selectedItem, price);  
+            }
+        });
+
+        //displays billing address form if 'no' radio button clicked
+        //hides billing form is user clicks back on 'yes'
+        document.addEventListener('DOMContentLoaded', function(){
+            var radios = document.getElementsByName('billing');
+
+            for(var i = 0; i < radios.length; i++) {
+                radios[i].addEventListener('change', function(){
+                    if(document.getElementById('no').checked){
+                    document.getElementById('C2').style.display = 'block';
+                    } else {
+                    document.getElementById('C2').style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        // checks all required forms have been filled 
+        function validateAllForms() {
+            var forms = document.forms;
+            for (var i = 0; i < forms.length; i++) {
+                if (!forms[i].checkValidity()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Get the modal
+        var confirmationModal = document.getElementById("confirmationModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("completeTransactionButton");
+
+        
+        var exit = document.getElementsByClassName("close")[0];
+
+        // When user clicks the button, open the modal 
+        // only if validateAllForms function returns true
+        // if not displays red error message
+        btn.onclick = function() {
+            if (validateAllForms()) {
+                confirmationModal.style.display = "block";
+            } else {
+                document.getElementById('errorMessage').innerText = "All required fields haven't been completed.";
+                
+                var inputs = document.getElementsByTagName('input');
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].addEventListener('input', function() {
+                        document.getElementById('errorMessage').innerText = "";
+                        });
+                }       
+            }
+        }
+
+        // When user clicks on (x), close the modal
+        exit.onclick = function() {
+            confirmationModal.style.display = "none";
+        }
+
+        // Handle confirmation
+        document.getElementById('confirmTransaction').addEventListener('click', function() {
+            // Proceed with the transaction
+            
+            confirmationModal.style.display = "none";
+
+            // for purpose of project remaining a one pager, 
+            // no further functionality here.
+            // in real world, would go to another confirmation page or something
+        });
+
+    </script>
+</body>
+</html>
